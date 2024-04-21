@@ -8,6 +8,7 @@ public class Controller_Hud : MonoBehaviour
     public Text gameOverText;
     private float distance = 0;
 
+    //Distancia redondeada ("F0")
     void Start()
     {
         gameOver = false;
@@ -16,6 +17,8 @@ public class Controller_Hud : MonoBehaviour
         gameOverText.gameObject.SetActive(false);
     }
 
+
+    //Distancia redondeada ("F0")
     void Update()
     {
         if (gameOver)
@@ -27,7 +30,7 @@ public class Controller_Hud : MonoBehaviour
         else
         {
             distance += Time.deltaTime;
-            distanceText.text = distance.ToString();
+            distanceText.text = distance.ToString("F0");
         }
     }
 }

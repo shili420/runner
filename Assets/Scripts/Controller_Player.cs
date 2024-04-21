@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class Controller_Player : MonoBehaviour
 {
@@ -7,6 +8,8 @@ public class Controller_Player : MonoBehaviour
     private float initialSize;
     private int i = 0;
     private bool floored;
+    public List<Parallax> allParallaxScripts = new List<Parallax>(); // Lista de todos los scripts Parallax
+
 
     private void Start()
     {
@@ -72,6 +75,12 @@ public class Controller_Player : MonoBehaviour
         {
             Destroy(this.gameObject);
             Controller_Hud.gameOver = true;
+            // Detener el movimiento de todos los fondos
+            foreach (Parallax parallaxScript in allParallaxScripts)
+            {
+                parallaxScript.StopParallax();
+            }
+
         }
 
         if (collision.gameObject.CompareTag("Floor"))
